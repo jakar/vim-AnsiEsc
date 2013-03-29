@@ -53,11 +53,6 @@ fun! AnsiEsc#AnsiEsc(rebuild)
    exe "set ft=".s:AnsiEsc_ft_{bn}
    if exists("colorname")|exe "colors ".colorname|endif
    let s:AnsiEsc_enabled_{bn}= 0
-   if has("gui_running") && has("menu") && &go =~ 'm'
-    " menu support
-    exe 'silent! unmenu '.g:DrChipTopLvlMenu.'AnsiEsc'
-    exe 'menu '.g:DrChipTopLvlMenu.'AnsiEsc.Start<tab>:AnsiEsc		:AnsiEsc<cr>'
-   endif
    let &l:hl= s:hlkeep_{bufnr("%")}
 "   call Dret("AnsiEsc#AnsiEsc")
    return
@@ -65,11 +60,6 @@ fun! AnsiEsc#AnsiEsc(rebuild)
    let s:AnsiEsc_ft_{bn}      = &ft
    let s:AnsiEsc_enabled_{bn} = 1
 "   call Decho("enable AnsiEsc highlighting: s:AnsiEsc_ft_".bn."<".s:AnsiEsc_ft_{bn}."> bn#".bn)
-   if has("gui_running") && has("menu") && &go =~ 'm'
-    " menu support
-    exe 'silent! unmenu '.g:DrChipTopLvlMenu.'AnsiEsc'
-    exe 'menu '.g:DrChipTopLvlMenu.'AnsiEsc.Stop<tab>:AnsiEsc		:AnsiEsc<cr>'
-   endif
 
    " -----------------
    "  Conceal Support: {{{2
